@@ -25,14 +25,17 @@ User.prototype.Display = function() {
     " Age:" + this.age;
 }
 
-for (var i=0; i < users.length; i++) {
+var i =0;
+var length = users.length;
+for (i=0; i < length; i++) {
     var p = users[i].split(",");
     var user = new User(p[0],p[1],p[2]);
 	allusers.push(user);
 }
 
 document.getElementById("usersBS").innerHTML = "All Users Before Sort: <br>";
-for (var i=0; i < allusers.length; i++){
+length = allusers.length;
+for (i=0; i < length; i++){
 	document.getElementById("usersBS").innerHTML += allusers[i].Display() + "<br>"; 
 }
 
@@ -50,7 +53,8 @@ allusers.sort(function(a, b) {
 });
 
 document.getElementById("usersAS").innerHTML = "All Users After Sort: <br>";
-for (var i=0; i < allusers.length; i++){       												document.getElementById("usersAS").innerHTML += allusers[i].Display() + "<br>"; 
+length = allusers.length;
+for (i=0; i < length; i++){       												document.getElementById("usersAS").innerHTML += allusers[i].Display() + "<br>"; 
 }
 </script>
 
