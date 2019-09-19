@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String to JSON Object</h2>
+<br>
+<p id="usersBS"></p>
+<p id="usersAS"></p>
+
+<script>
+let txt = `Hiten, programmer, 52
+Jalpa, Doctor, 51
+Priten, Businessman, 24`;
+let users = txt.split(/\r?\n/);
+let allusers = [];
+
+function User(name, title, age) {
+  this.name = name;
+  this.title = title;
+  this.age = age;
+}
+User.prototype.Display = function() {
+	return "Title:" + this.title + 
+    " Name:" + this.name + 
+    " Age:" + this.age;
+}
+
+for (var i=0; i < users.length; i++) {
+    var p = users[i].split(",");
+    var user = new User(p[0],p[1],p[2]);
+	allusers.push(user);
+}
+
+document.getElementById("usersBS").innerHTML = "All Users Before Sort: <br>";
+for (var i=0; i < allusers.length; i++){
+	document.getElementById("usersBS").innerHTML += allusers[i].Display() + "<br>"; 
+}
+
+allusers.sort(function(a, b) {
+  var titleA = a.title.toUpperCase(); // ignore upper and lowercase
+  var titleB = b.title.toUpperCase(); // ignore upper and lowercase
+  if (titleA < titleB) {
+    return -1;
+  }
+  if (titleA > titleB) {
+    return 1;
+  }
+  // names must be equal
+  return 0;
+});
+
+document.getElementById("usersAS").innerHTML = "All Users After Sort: <br>";
+for (var i=0; i < allusers.length; i++){       												document.getElementById("usersAS").innerHTML += allusers[i].Display() + "<br>"; 
+}
+</script>
+
+</body>
+</html>
